@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ремонт квартир — Современный лендинг</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf7f4;
+      --white: #fff;
+      --gray: #e8e7e3;
+      --beige: #f5ede6;
+      --accent: #6a4d36;
+      --black: #212121;
+      --border: #ececec;
+      --shadow: 0 2px 16px 0 rgba(90,70,50,0.07);
+    }
+    * {box-sizing: border-box; margin: 0; padding: 0;}
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--black);
+      line-height: 1.7;
+      font-size: 18px;
+      min-height: 100vh;
+    }
+    header {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      padding: 28px 0 20px 0;
+      position: sticky; top:0; z-index:99;
+    }
+    .container {max-width: 1200px; margin: 0 auto; padding: 0 18px;}
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo {font-weight: 700; font-size: 2rem; letter-spacing: 2px;}
+    .menu {
+      display: flex; gap: 30px;
+      align-items: center;
+      font-size: 1.06rem;
+    }
+    .menu a {
+      text-decoration: none;
+      color: var(--black);
+      opacity: 0.85;
+      transition: color 0.18s;
+      font-weight: 500;
+    }
+    .menu a:hover {color: var(--accent);}
+    .cta-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 32px;
+      font-size: 1rem;
+      padding: 13px 36px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 10px 0 rgba(106,77,54,0.09);
+      margin-left: 24px;
+      transition: background .18s;
+    }
+    .cta-btn:hover {background: #513926;}
+
+    /* Hero */
+    .hero {
+      display: flex; flex-direction: column;
+      align-items: flex-start;
+      padding: 70px 0 56px 0;
+      gap: 38px;
+    }
+    .hero h1 {
+      font-size: 2.7rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      max-width: 620px;
+      letter-spacing: -1px;
+    }
+    .hero p {
+      font-size: 1.28rem;
+      max-width: 540px;
+      margin-bottom: 18px;
+      color: #615a51;
+      opacity: 0.85;
+    }
+    .hero-img {
+      width: 100%; max-width: 480px; border-radius: 32px;
+      box-shadow: 0 4px 24px 0 rgba(100,85,70,0.11);
+      margin-top: 8px;
+    }
+    @media (min-width: 900px) {
+      .hero {flex-direction: row;}
+      .hero-content {flex:1;}
+      .hero-image {flex:1; display: flex; justify-content:flex-end; align-items:center;}
+      .hero-img {margin-top:0;}
+    }
+
+    /* Trust */
+    .trust {
+      background: var(--beige);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      padding: 42px 32px;
+      margin: 54px 0;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items:center;
+      gap: 32px;
+    }
+    .trust-item {
+      text-align: center; min-width: 110px;
+    }
+    .trust-item strong {font-size: 2.2rem; color: var(--accent);}
+    .trust-item span {display:block; margin-top:7px; color: #71635a; font-size: 1rem;}
+    .partners {display: flex; gap:28px; align-items:center; flex-wrap:wrap;}
+    .partner-logo {
+      height: 40px; opacity: 0.7;
+      filter: grayscale(1) brightness(0.92);
+      transition: opacity .2s;
+    }
+    .partner-logo:hover {opacity: 1;}
+
+    /* Projects */
+    .section-title {font-size: 2rem; font-weight: 700; margin-bottom: 24px; margin-top: 0;}
+    .projects {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 30px;
+      margin: 48px 0;
+    }
+    .project-card {
+      background: var(--white);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: box-shadow .17s;
+    }
+    .project-card:hover {box-shadow: 0 4px 32px 0 rgba(106,77,54,0.16);}
+    .project-img {width:100%; height:190px; object-fit:cover;}
+    .project-content {padding: 18px 18px 14px 18px;}
+    .project-title {font-weight: 600; font-size: 1.13rem;}
+    .project-desc {font-size: 0.96rem; color:#736357; opacity:0.95;}
+
+    /* Why us */
+    .whyus {
+      display: flex; flex-wrap: wrap; gap:32px; margin: 46px 0 38px 0;
+    }
+    .why-card {
+      flex: 1 1 210px;
+      min-width: 190px;
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 28px 18px;
+      text-align: center;
+      transition: box-shadow .17s;
+    }
+    .why-card:hover {box-shadow: 0 4px 24px 0 rgba(106,77,54,0.11);}
+    .why-icon {font-size: 2.2rem; margin-bottom: 9px;}
+    .why-title {font-weight: 600; margin-bottom: 6px;}
+    .why-desc {color: #7b7266; font-size:0.97rem;}
+
+    /* Steps */
+    .steps {
+      display: flex; flex-wrap: wrap; gap:28px; margin:44px 0 56px 0;
+    }
+    .step-card {
+      background: var(--beige);
+      border-radius: 16px;
+      padding: 30px 20px 22px 20px;
+      flex: 1 1 180px; min-width:170px; max-width:220px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .step-num {
+      display:inline-block; font-weight:700; color:var(--accent);
+      background: #fff; border-radius:50%; width:38px; height:38px; line-height:38px; font-size:1.3rem;
+      box-shadow:0 2px 10px 0 rgba(110, 94, 84, 0.10); margin-bottom: 8px;
+    }
+    .step-title {font-weight:600;}
+    .step-desc {color: #766c61; font-size:0.95rem; margin-top:6px;}
+
+    /* Reviews */
+    .reviews {
+      margin: 36px 0 48px 0;
+      display: flex; gap:28px; flex-wrap: wrap;
+    }
+    .review-card {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 22px 20px 18px 20px;
+      flex: 1 1 300px; min-width:220px; max-width:340px;
+      display:flex; flex-direction:column; align-items:flex-start;
+    }
+    .review-text {margin-bottom:14px; color: #71635a;}
+    .review-user {display:flex; align-items:center; gap:13px;}
+    .review-avatar {
+      width:44px; height:44px; border-radius:50%; object-fit:cover;
+      border:2px solid var(--beige);
+    }
+    .review-name {font-weight:600; font-size:1.07rem;}
+
+    /* Contact */
+    .contact-block {
+      display: flex; flex-wrap:wrap; gap:38px; background: var(--beige); border-radius: 24px;
+      padding: 38px 28px; margin-bottom:40px; align-items: center; box-shadow: var(--shadow);
+    }
+    .contact-info {
+      flex:1 1 230px; min-width:180px; font-size:1.06rem;
+    }
+    .contact-info b {display:block; margin-bottom:7px;}
+    .contact-info a {color:var(--accent); text-decoration:none;}
+    .contact-form {flex:2 1 320px; min-width:220px;}
+    .contact-form form {display:flex; flex-direction:column; gap:16px;}
+    .contact-form input, .contact-form textarea {
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 14px; font-size: 1.06rem;
+      background: #fff; resize:none;
+      transition: border .14s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {border:1.5px solid var(--accent);}
+    .contact-form button {
+      background: var(--accent); color: #fff; border: none;
+      border-radius: 16px; font-weight:600; font-size:1.07rem;
+      padding: 13px 0; cursor: pointer; transition: background .17s;
+      margin-top:4px;
+    }
+    .contact-form button:hover {background: #513926;}
+    /* Footer */
+    footer {
+      background: #eceae7; color:#8b8478;
+      text-align:center; font-size:1.03rem;
+      border-radius: 18px 18px 0 0;
+      padding: 24px 0 19px 0; margin-top:38px;
+    }
+    @media (max-width: 900px) {
+      .hero {flex-direction: column;}
+      .hero-image {justify-content: center;}
+      .trust, .whyus, .steps, .reviews, .contact-block {flex-direction: column; gap:22px;}
+    }
+    @media (max-width: 640px) {
+      header, .trust, .contact-block, .whyus, .steps, .reviews, .container {padding-left:7px; padding-right:7px;}
+      .section-title {font-size:1.4rem;}
+      .hero h1 {font-size:1.6rem;}
+      .trust {padding: 26px 8px;}
+      .why-card, .step-card, .review-card {padding: 18px 8px;}
+      .project-img {height:120px;}
+      .contact-block {padding:18px 4px;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">КВАРТИРНЫЙ РЕМОНТ</div>
+        <div class="menu">
+          <a href="#about">О компании</a>
+          <a href="#projects">Проекты</a>
+          <a href="#why">Почему мы</a>
+          <a href="#steps">Этапы</a>
+          <a href="#contacts">Контакты</a>
+          <button class="cta-btn" onclick="document.getElementById('contacts').scrollIntoView({behavior:'smooth'});">Заказать расчёт</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- Hero -->
+      <section class="hero" id="about">
+        <div class="hero-content">
+          <h1>Современный ремонт квартир <br> под ключ в Москве</h1>
+          <p>Выполним ремонт любой сложности с гарантией и прозрачной сметой. Бесплатный выезд замерщика и дизайн-проект для каждого клиента.</p>
+          <button class="cta-btn" onclick="document.getElementById('contacts').scrollIntoView({behavior:'smooth'});">Оставить заявку</button>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Ремонт квартиры" class="hero-img">
+        </div>
+      </section>
+
+      <!-- Trust -->
+      <section class="trust">
+        <div class="trust-item">
+          <strong>12+</strong>
+          <span>Лет на рынке</span>
+        </div>
+        <div class="trust-item">
+          <strong>320+</strong>
+          <span>Готовых объектов</span>
+        </div>
+        <div class="trust-item">
+          <strong>5 лет</strong>
+          <span>Гарантия на работы</span>
+        </div>
+        <div class="trust-item">
+          <strong>97%</strong>
+          <span>Рекомендаций</span>
+        </div>
+        <div class="partners">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_Yandex.svg" alt="Партнёр" class="partner-logo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Sberbank_Logo_2019.svg" alt="Партнёр" class="partner-logo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Ozon_logo.svg" alt="Партнёр" class="partner-logo">
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects">
+        <h2 class="section-title">Наши проекты</h2>
+        <div class="projects">
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=600&q=80" class="project-img" alt="Гостиная">
+            <div class="project-content">
+              <div class="project-title">Квартира на Шаболовке</div>
+              <div class="project-desc">Полный евро-ремонт 2-комнатной квартиры. Срок — 65 дней.</div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1460518451285-97b6aa326961?auto=format&fit=crop&w=600&q=80" class="project-img" alt="Кухня">
+            <div class="project-content">
+              <div class="project-title">Дизайн-кухня в ЖК "Сити"</div>
+              <div class="project-desc">Современная кухня с подсветкой, вся мебель — под заказ.</div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=600&q=80" class="project-img" alt="Спальня">
+            <div class="project-content">
+              <div class="project-title">Минималистичная спальня</div>
+              <div class="project-desc">Авторский проект с гардеробной и умным светом.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Us -->
+      <section id="why">
+        <h2 class="section-title">Почему выбирают нас</h2>
+        <div class="whyus">
+          <div class="why-card">
+            <div class="why-icon">🏆</div>
+            <div class="why-title">Гарантия 5 лет</div>
+            <div class="why-desc">Официальная гарантия и прозрачный договор</div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">💡</div>
+            <div class="why-title">Современный дизайн</div>
+            <div class="why-desc">Собственный дизайнер и индивидуальный подход</div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">⚡</div>
+            <div class="why-title">Сжатые сроки</div>
+            <div class="why-desc">Работаем быстро — фиксируем сроки в договоре</div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">🤝</div>
+            <div class="why-title">Честная смета</div>
+            <div class="why-desc">Никаких скрытых платежей, всё прозрачно</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Steps -->
+      <section id="steps">
+        <h2 class="section-title">Этапы работы</h2>
+        <div class="steps">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <div class="step-title">Заявка</div>
+            <div class="step-desc">Вы оставляете заявку через сайт или по телефону</div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <div class="step-title">Встреча и замер</div>
+            <div class="step-desc">Бесплатный выезд специалиста, согласуем дизайн</div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <div class="step-title">Договор</div>
+            <div class="step-desc">Подписываем договор, фиксируем стоимость и сроки</div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">4</div>
+            <div class="step-title">Ремонт</div>
+            <div class="step-desc">Начинаем работу, регулярно информируем вас</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reviews -->
+      <section>
+        <h2 class="section-title">Отзывы клиентов</h2>
+        <div class="reviews">
+          <div class="review-card">
+            <div class="review-text">"Сделали ремонт очень быстро и качественно! Помогли с выбором материалов, всегда были на связи."</div>
+            <div class="review-user">
+              <img src="https://randomuser.me/api/portraits/women/90.jpg" class="review-avatar" alt="Отзыв">
+              <span class="review-name">Екатерина, ЖК Серебряный Бор</span>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="review-text">"Все было прозрачно, смета не менялась. Рекомендую тем, кто ценит своё время и нервы!"</div>
+            <div class="review-user">
+              <img src="https://randomuser.me/api/portraits/men/45.jpg" class="review-avatar" alt="Отзыв">
+              <span class="review-name">Владимир, Сколково</span>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="review-text">"Очень крутая команда. Понравился результат — всё по дизайн-проекту, ни одной переделки!"</div>
+            <div class="review-user">
+              <img src="https://randomuser.me/api/portraits/women/70.jpg" class="review-avatar" alt="Отзыв">
+              <span class="review-name">Анна, ЖК Сити Парк</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Контакты и форма -->
+      <section id="contacts">
+        <h2 class="section-title">Контакты и заявка</h2>
+        <div class="contact-block">
+          <div class="contact-info">
+            <b>Телефон:</b> <a href="tel:+74951234567">+7 (495) 123-45-67</a><br>
+            <b>Email:</b> <a href="mailto:info@remont.ru">info@remont.ru</a><br>
+            <b>Адрес офиса:</b> Москва, ул. Примерная, 15<br>
+            <b>WhatsApp:</b> <a href="https://wa.me/74951234567">Быстрый чат</a>
+          </div>
+          <div class="contact-form">
+            <form>
+              <input type="text" name="name" placeholder="Ваше имя" required>
+              <input type="tel" name="phone" placeholder="Телефон" required>
+              <textarea name="message" rows="3" placeholder="Комментарий"></textarea>
+              <button type="submit">Оставить заявку</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer>
+    &copy; 2025 КВАРТИРНЫЙ РЕМОНТ — качественный ремонт под ключ в Москве | <a href="#" style="color:#7a5d42;">Политика конфиденциальности</a>
+  </footer>
+</body>
+</html>
